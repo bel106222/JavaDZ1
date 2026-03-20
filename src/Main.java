@@ -1,15 +1,53 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.printf("Домашнее задание №1\n");
+        for (int i = 1; i <= 12; i++) {
+            System.out.println("Задание №" + i);
+            switch(i)
+            {
+                case 1:
+                    stingShow();
+                    break;
+                case 2:
+                    percentOfNumber();
+                    break;
+                case 3:
+                    System.out.println(i);
+                    break;
+            }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        }
+    }
+
+    static void stingShow(){
+        String currentString =
+                "\"Your time is limited,\n\t" +
+                        "so don’t waste it\n\t\t" +
+                        "living someone else’s life.\"\n\t\t\t" +
+                        "Steve Jobs";
+        System.out.println(currentString);
+    }
+
+    static void percentOfNumber(){
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.println("Введите число, от которого будет получен процент:");
+            if (scanner.hasNextInt()) {
+                int num = scanner.nextInt();
+                System.out.println("Теперь введите число процентов:");
+                if (scanner.hasNextInt()) {
+                    int percent = scanner.nextInt();
+                    System.out.println(percent + "% от числа " + num + " = " + (num * percent) / 100);
+                    return;
+                } else {
+                    System.out.println("Ошибка: введено не число.");
+                }
+            } else {
+                System.out.println("Ошибка: введено не число.");
+            }
+            scanner.close();
         }
     }
 }
