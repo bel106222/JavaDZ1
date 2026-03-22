@@ -232,12 +232,13 @@ public class Main {
             second = first;
             first = temp;
         }
-        System.out.println("Все нечётные числа в диапазоне от " + first + " до " + second + ":");
+        System.out.print("Все нечётные числа в диапазоне от " + first + " до " + second + ": ");
         for(int i = first; i <= second; i++) {
             if (i % 2 != 0) {
-                System.out.println(i);
+                System.out.print(i + " ");
             }
         }
+        System.out.println();
     }
     //Задание 8
     private static void showTable(){
@@ -426,7 +427,7 @@ public class Main {
     }
 
     private static void createLine(int length, int direction, char symbol ) {
-        System.out.println("Рисуем линию:");
+        System.out.println("Рисуем " + (direction == 1 ? "вертикальную" : "горизонтальную") + " линию:");
         while (length>0){
             if(direction == 1){
                 System.out.println(symbol);
