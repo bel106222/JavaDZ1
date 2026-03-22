@@ -78,7 +78,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.printf("Домашнее задание №1\n");
+        System.out.printf("ДОМАШНЕЕ ЗАДАНИЕ №1\n");
 
         for (int i = 1; i <= 12; i++) {
             System.out.println("Задание №" + i);
@@ -118,7 +118,7 @@ public class Main {
                     lines();
                     break;
                 case 12:
-                    //sort();
+                    sort();
                     break;
             }
         }
@@ -380,15 +380,50 @@ public class Main {
     }
     //Задание 12
     private static void sort(){
-
+        int size = 20;
+        int direction = 0;
+        int[] array = new int[size];
+        Random random = new Random();
+        System.out.print("Сгенерирован массив: ");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(51) - 25;
+            System.out.print(array[i] + " ");
+        };
+        System.out.println();
+        while (true){
+            direction = inputInt("Введите направление сортировки (1 - по убыванию, 2 - по возрастанию):>");
+            if (direction == 1 || direction == 2){
+                break;
+            } else {
+                System.out.println("Ошибка: число не в диапазоне от 1 до 2, попробуйте снова...");
+            }
+        }
+        System.out.println("Массив после сортировки по " + (direction == 1 ? "убыванию" : "возрастанию") + ": " + Arrays.toString(sortArray(direction, array)));
     }
-//    Задание 11
-//    Напишите метод, который отображает горизонтальную или вертикальную линию из некоторого
-//    символа. Метод принимает в качестве параметра: длину линии, направление, символ.
-//
-//    Задание 12
-//    Напишите метод, сортирующий массив по убыванию или возрастанию в зависимости
-//    от выбора пользователя.
+
+    private static int[] sortArray(int direction, int[] array ) {
+        int counter = 0;
+        int tmp = 0;
+        while (counter < array.length) {
+            for (int i = 0; i < array.length-1; i++) {
+                if(direction == 1) {
+                    if(array[i+1] > array[i]) {
+                        tmp = array[i];
+                        array[i] = array[i+1];
+                        array[i+1] = tmp;
+                    }
+                } else {
+                    if(array[i+1] < array[i]) {
+                        tmp = array[i];
+                        array[i] = array[i+1];
+                        array[i+1] = tmp;
+                    }
+                }
+            }
+            ++counter;
+        }
+        return array;
+    }
 
     private static void createLine(int length, int direction, char symbol ) {
         System.out.println("Рисуем линию:");
